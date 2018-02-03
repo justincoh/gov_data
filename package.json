@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "FLASK_APP=main.py flask run",
+    "dev": "FLASK_APP=main.py FLASK_DEBUG=1 flask run",
     "shell": "FLASK_APP=main.py flask shell"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "d3": "^4.13.0"
+    "d3": "^4.13.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   }
 }
