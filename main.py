@@ -8,12 +8,13 @@ import os
 import settings
 
 from flask import Flask, render_template  # , request
-app = Flask(__name__)
 
+# static files should really be handled by a web server...
+app = Flask(__name__)  # , static_url_path='/assets')
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("index.html", test="variable")
 
 
 def read_csv(filename):
