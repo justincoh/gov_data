@@ -5,7 +5,9 @@ import csv
 import io
 import json
 import os
-import settings
+from markupsafe import Markup
+
+from settings import FILES
 
 from flask import Flask, render_template  # , request
 
@@ -14,7 +16,10 @@ app = Flask(__name__)  # , static_url_path='/assets')
 
 @app.route("/")
 def home():
-    return render_template("index.html", test="variable")
+    return render_template(
+        "index.html",
+        filenames=Markup(json.dumps(FILES.keys())),
+    )
 
 
 def read_csv(filename):
@@ -31,12 +36,12 @@ def get_data(file_constant):
     Ajax entry endpoint for csv data
     TODO gate this?
     """
-    try:
-        filename = getattr(settings, file_constant)
 
-    except AttributeError:
+    filename = FILES.get(file_constant)
+
+    if filename is None:
         return app.response_class(
-            response="Invalid file name",
+            response="Invalid file: {}".format(file_constant),
             status=404,
             mimetype="application/json",
         )

@@ -1,7 +1,11 @@
-<h1>Hello world</h1>
-<h2>{{test}}</h2>
+<p>initial props from server, should probably at least
+    send through the filename constants {{filenames}}</p>
 <div id="root"></div>
 
+<script>
+    {{filenames}}.forEach(function(el) {
+        window[el] = el;
+    });
+</script>
 <script src="https://d3js.org/d3.v5.js"></script>
 <script src="/static/dist/bundle.js"></script>
-<!--<script src="/static/src/index.js"></script>-->
