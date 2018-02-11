@@ -18,7 +18,7 @@ def home():
 
 
 def read_csv(filename):
-    path = os.path.join(os.getcwd(), filename)
+    path = os.path.join(os.getcwd(), "data", filename)
     with io.open(path, "r", encoding="utf-8-sig") as infile:
         reader = csv.DictReader(infile)
         data = [row for row in reader]
